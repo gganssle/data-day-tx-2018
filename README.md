@@ -1,7 +1,12 @@
 # data-day-tx-2018
 
+This is the talk given by Graham Ganssle and Steve Purves at [Data Day Texas](http://datadaytexas.com/) 2018. This talk was given in conjunction with Lynn Pausic and Chris LaCava's talk about how human bias is preserved in machine learning systems.
 
+## The Aim
+We show how biased training data biases results of model outputs by assessing the qualification of loan applicants based on US Census data. We train our model on a dense, varied dataset and quantify the difference in apparent loan-worthiness with respect to applicant gender.
 
+## Methods
+We use a graph convolutional network to predict a node property (credit worthiness) from other node properties and edge connections to other credit applicants.
 
 
 ## License
