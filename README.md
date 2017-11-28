@@ -13,6 +13,11 @@ We use a graph convolutional network to predict a node property (credit worthine
 ## Data
 The data used in this experiment is extracted from the 1994 US Census data. It is the commonly referenced Census-Income dataset, AKA the "Adult" dataset. We got it from the UCI ML Repo, [here](http://archive.ics.uci.edu/ml/datasets/Adult).
 
+## How do you run this thing?
+You first have to condition the data by running the `data_cleaning` and `test_cleaning` notebooks. Then you have to run the `graphicator` notebook to build the graph and associated files out of the clean csv files.
+
+Before you run train the GCN you have to build the GCN code. Do this by `cd gcn; python setup.py install;`. Then to train, cd into the one-level-deeper gcn/ and run the training script: `cd gcn; python train --dataset credit`.
+
 ## A Tip of Our Hat
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">data-day-TX-2018</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Lynn Pausic, Graham Ganssle, Steve Purves, Expero Inc</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>, **except where otherwise noted**.
 
