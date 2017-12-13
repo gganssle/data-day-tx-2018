@@ -73,6 +73,9 @@ def evaluate(features, support, labels, mask, placeholders):
 # Init variables
 sess.run(tf.global_variables_initializer())
 
+# Draw graph for debugging
+tf.summary.FileWriter('../../logs', sess.graph)
+
 cost_val = []
 
 # Train model
@@ -105,3 +108,43 @@ print("Optimization Finished!")
 test_cost, test_acc, test_duration = evaluate(features, support, y_test, test_mask, placeholders)
 print("Test set results:", "cost=", "{:.5f}".format(test_cost),
       "accuracy=", "{:.5f}".format(test_acc), "time=", "{:.5f}".format(test_duration))
+
+# outputs test
+feed_dict_out = construct_feed_dict(features, support, y_test, test_mask, placeholders)
+outs = sess.run(tf.nn.softmax(model.outputs), feed_dict=feed_dict_out)
+#print(outs)
+#print('outputs (softmax):',outs.shape)
+#print(np.argmax(outs, axis=1))
+
+#print('\n\n', test_mask)
+#print('test mask', test_mask.shape)
+#import matplotlib.pyplot as plt
+#plt.plot(test_mask)
+#plt.show()
+#print('\n\n', features[0])
+#print('features0', features[0].shape)
+#print('\n\n', features[1])
+#print('features1', features[1].shape)
+#print('\n\n', features[2])
+#print('features2', len(features[2]))
+#print('\n\n', support)
+#print('support', len(support))
+print('\n\n', y_test)
+#print('y test', y_test.shape)
+#plt.plot(y_test[:,0], label='0th place')
+#plt.plot(y_test[:,1], label='1st place')
+#plt.legend()
+#plt.show()
+#print('\n\n', placeholders)
+#print('placeholders', len(placeholders))
+
+# write out results
+import pandas as pd
+df = pd.DataFrame(data=list(np.argmax(outs, axis=1)), columns=['prediction'])
+df['test mask'] = list(test_mask)
+df['groundtruth'] = list(np.argmax(y_test, axis=1))
+df.to_csv('../../results/predictions.csv')
+
+
+
+

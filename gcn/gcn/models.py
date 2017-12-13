@@ -153,6 +153,7 @@ class GCN(Model):
                                                   self.placeholders['labels_mask'])
 
     def _accuracy(self):
+        #print('\n\noutputs!', tf.Tensor.eval(self.outputs), '\n\n')
         self.accuracy = masked_accuracy(self.outputs, self.placeholders['labels'],
                                         self.placeholders['labels_mask'])
 
