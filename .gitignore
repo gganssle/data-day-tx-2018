@@ -1,3 +1,4 @@
-dat/clean.*
+dat/clean*
 dat/ind.*
-img/graph.png
+dat/edges.csv
+dat/nodes.csv
