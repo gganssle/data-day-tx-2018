@@ -1,4 +1,6 @@
 dat/clean*
 dat/ind.*
 dat/edges.csv
+dat/edges2.csv
 dat/nodes.csv
+
